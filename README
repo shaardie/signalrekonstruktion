@@ -1,4 +1,4 @@
-This small scripts arised while i was writing my master thesis. they were
+These small scripts arised while i was writing my master thesis. they were
 intended to create the data for the numerical experiments.
 
 I use octave ( http://www.gnu.org/software/octave/ ) to execute them. It should
