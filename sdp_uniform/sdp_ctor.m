@@ -1,36 +1,35 @@
-% sdp_ctor erstellt aus einem komplexen SDP im Sedumi-
-% Format ein reelles SDP im Sedumi-Format.
-% Input: komplexes SDP A,b,c im Sedumi-Format
-% Output: reelles SDP A,b,c im Sedumi-Format
- 
+% sdp_ctor construct a real SDP in sedumi-format out of a complex SDP in
+% sedumi-format
+%
+% Input:  complex SDP A,b,c in sedumi-format
+% Output: real SDP A,b,c in sedumi-format
+
 function [A,b,c] = sdp_ctor (A,b,c)
 
-   % Dimension 
-   n = sqrt(length(c));   
-   % Anzahl Constraints
+   % dimension
+   n = sqrt(length(c));
+   % number of constraints
    m = size(A,2);
-   % Anzahl der neuen Constraints
-   k = n*(n-1);
+   % new number of constraints
+	k = n*(n-1);
 
-   % Erstelle aus komplexen c ein reelles c
+   % construct real c out of complex c
    c = reshape(c,n,n);
    c = vec([real(c) , -imag(c) ; imag(c) , real(c)]);
-   
-   % Erstelle aus komplexen b ein reelles b
+
+   % construct real b out of complex b
    b = 2 * b;
    b = [b ; zeros(k , 1)];
-   
-   % Erstelle aus komplexen A ein reelles A
-   % Konstruiere aus den komplexen Constraints
-   % reelle Constraints
+
+   % construct real A out of complex A
+   % construct real constraints out of complex constraints
    A = [A ; zeros(3*n^2,m)];
    for j = 1:m
       H = reshape(A(1:n^2,j),n,n);
       A(: , j) = vec([real(H) , -imag(H) ; imag(H) , real(H)]);
    end;
-   
-   % Fuege Constraints hinzu, die die Form der Ausgabe
-   % kontrolieren
+
+   % add control constraints
    A = [A , zeros(4*n^2,k)];
    for i = 1:n-1
       for j = i+1:n

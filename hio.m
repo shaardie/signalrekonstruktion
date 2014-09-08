@@ -1,3 +1,16 @@
+% function [g, eS] = hio (S, it, alpha)
+%
+% Using the hybrid input output algorithm to reconstruct a real signal with
+% norm 1.
+%
+% Input:  'S'     is the magnitude of the fouriertransformation
+%         'it'    is the number of iteration before the algorithm terminate
+%         'alpha' is an parameter chosen by the user
+%
+% Output: 'g'     is the estimate signal
+%         'eS'    is the quadratic error of the fouriertransformation of
+%                 estimate Signal in every iteration
+
 function [g,eS] = hio (it,S,alpha)
 
 % estimate signal
