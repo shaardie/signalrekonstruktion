@@ -4,3 +4,5 @@ intended to create the data for the numerical experiments.
 I use octave ( http://www.gnu.org/software/octave/ ) to execute them. It should
 be noted that for some of the scripts the semidefinite solver CSDP 
 ( https://projects.coin-or.org/Csdp/ ) is needed.
+
+Feel free to use or change these scripts.
